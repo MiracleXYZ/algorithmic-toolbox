@@ -39,11 +39,11 @@ long long MaxPairwiseProductFast(const std::vector<int>& numbers) {
 
 int main() {
     while (true) {
-        int n = rand() % 10 + 2;
+        int n = rand() % 4 + 2;
         std::cout << n << "\n";
         std::vector<int> a;
         for (int i = 0; i < n; ++i) {
-            a.push_back(rand() % 100000);
+            a.push_back(rand() % 10);
         }
         for (int i = 0; i < n; ++i) {
             std::cout << a[i] << ' ';
