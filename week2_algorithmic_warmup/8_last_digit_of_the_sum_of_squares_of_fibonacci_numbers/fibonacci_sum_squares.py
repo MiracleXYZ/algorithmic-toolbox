@@ -1,14 +1,24 @@
 def fibonacci_sum_squares(n):
     if n <= 1:
         return n
+    
+    pairs = []
 
-    previous, current, sum = 0, 1, 1
+    previous = 0
+    current  = 1
+    
+    pairs.append((previous, current))
 
-    for _ in range(n - 1):
-        previous, current = current, previous + current
-        sum += current * current
+    for _ in range(n):
+        previous, current = current, (previous + current) % 10
+        
+        # identify if there's a loop
+        if (previous, current) == (0, 1):
+            return (pairs[(n - 1) % len(pairs)][1] * pairs[n % len(pairs)][1]) % 10
+            
+        pairs.append((previous, current))
 
-    return sum % 10
+    return (previous * current) % 10
 
 
 if __name__ == '__main__':

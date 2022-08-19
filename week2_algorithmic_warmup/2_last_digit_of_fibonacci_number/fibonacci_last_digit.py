@@ -6,9 +6,9 @@ def fibonacci_last_digit(n):
     current  = 1
 
     for _ in range(n - 1):
-        previous, current = current, previous + current
+        previous, current = current, (previous + current) % 10
 
-    return current % 10
+    return current
 
 
 if __name__ == '__main__':
