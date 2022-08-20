@@ -1,18 +1,22 @@
-from itertools import permutations
+def largest_number(numbers):
+    def is_better(number1, number2):
+        # swap and compare
+        return (number1 + number2) >= (number2 + number1)
+
+    largest = []
+
+    while numbers:
+        max_number = "0"
+        for number in numbers:
+            if is_better(number, max_number):
+                max_number = number
+        largest.append(max_number)
+        numbers.remove(max_number)
+
+    return int("".join(largest))
 
 
-def largest_number_naive(numbers):
-    numbers = list(map(str, numbers))
-
-    largest = 0
-
-    for permutation in permutations(numbers):
-        largest = max(largest, int("".join(permutation)))
-
-    return largest
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     _ = int(input())
     input_numbers = input().split()
-    print(largest_number_naive(input_numbers))
+    print(largest_number(input_numbers))
